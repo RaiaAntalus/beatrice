@@ -1,2 +1,2 @@
-# internship
-# My internship works
+# Internship
+My internship works
