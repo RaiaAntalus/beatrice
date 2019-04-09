@@ -9,4 +9,5 @@ fi
 MYSQL_PWD="toucacer" mysqldump -u root --all-databases > /root/backup/base.sql
 
 cp -r /var/www/html/ /root/backup/apache
+tar jcvf /root/backup_site.bz2 /root/backup
 scp -i /root/.ssh/id_rsa.pub script.sh sasabe@10.1.1.2:~
