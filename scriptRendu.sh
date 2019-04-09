@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
 
-if [ ! -d /root/backup ]; then
-    mkdir /root/backup
+if [ ! -d /home/$USER/backup ]; then
+	mkdir /home/$USER/backup
 else
-    rm -rf /root/backup/*
+	rm -rf /home/$USER/backup/*
 fi
 
-MYSQL_PWD="toucacer" mysqldump -u root --all-databases > /root/backup/base.sql
+MYSQL_PWD="toucacer" mysqldump -u root --all-databases > /home/$USER/backup/base.sql
 
-cp -r /var/www/html/ /root/backup/apache
-tar jcvf /root/backup_site.bz2 /root/backup
-scp -i /root/.ssh/id_rsa.pub script.sh sasabe@10.1.1.2:~
+mkdir /home/$USER/backup/apache
+
+cp -r /var/www/html /home/$USER/backup/apache
+tar jcvf /home/$USER/backup_site.bz2 /home/$USER/backup
+scp -i ~/.ssh/id_rsa.pub /home/$USER/backup_site.bz2 sasabe@10.1.1.2:~
