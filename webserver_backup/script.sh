@@ -6,10 +6,10 @@ else
 	rm -rf /home/$USER/backup/*
 fi
 
-MYSQL_PWD="toucacer" mysqldump -u root --all-databases > /home/$USER/backup/base.sql
+MYSQL_PWD="*********" mysqldump -u root --all-databases > /home/$USER/backup/base.sql
 
 mkdir /home/$USER/backup/apache
 
 cp -r /var/www/html /home/$USER/backup/apache
 tar jcvf /home/$USER/backup_site.bz2 /home/$USER/backup
-scp -i ~/.ssh/id_rsa.pub /home/$USER/backup_site.bz2 sasabe@10.1.1.2:~
+scp -i ~/.ssh/id_rsa.pub /home/$USER/backup_site.bz2 user@secretaddre.ss:~
