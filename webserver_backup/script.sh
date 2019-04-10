@@ -13,5 +13,5 @@ MYSQL_PWD="$mysql_pwd" mysqldump -u $mysql_user --all-databases > $backup_path/b
 mkdir $backup_path/apache
 
 cp -r $path_to_website $backup_path/apache
-tar jcvf ~/backup.bz2 $backup_path
+tar jcvf backup.bz2 $backup_path
 scp -i ~/.ssh/id_rsa.pub backup.bz2 sasabe@10.1.1.2:~
