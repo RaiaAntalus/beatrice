@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 
-if [ ! -d /home/$USER/backup ]; then
-	mkdir /home/$USER/backup
+source variables.sh
+
+if [ ! -d $backup_path ]; then
+	mkdir $backup_path
 else
-	rm -rf /home/$USER/backup/*
+	rm -rf $backup_path/*
 fi
 
-MYSQL_PWD="*********" mysqldump -u root --all-databases > /home/$USER/backup/base.sql
+MYSQL_PWD="$mysql_pwd" mysqldump -u $mysql_user --all-databases > $backup_path/base.sql
 
-mkdir /home/$USER/backup/apache
+mkdir $backup_path/apache
 
-cp -r /var/www/html /home/$USER/backup/apache
-tar jcvf /home/$USER/backup_site.bz2 /home/$USER/backup
-scp -i ~/.ssh/id_rsa.pub /home/$USER/backup_site.bz2 user@secretaddre.ss:~
+cp -r $path_to_website $backup_path/apache
+tar jcvf ~/backup.bz2 $backup_path
+scp -i ~/.ssh/id_rsa.pub backup.bz2 sasabe@10.1.1.2:~
