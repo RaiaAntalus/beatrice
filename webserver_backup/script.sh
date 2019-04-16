@@ -1,17 +1,28 @@
 #!/usr/bin/env bash
 
-source variables.sh
+# $1 = $backup_path
+# $2 = $mysql_pwd
+# $3 = $mysql_user
+# $4 = $path_to_website
+# $5 = $local_user
+# $6 = $local_ip
+# $7 = $site_name
 
-if [ ! -d $backup_path ]; then
-	mkdir $backup_path
+# Si le dossier backup est créé, le vide. Sinon le crée
+if [ ! -d $1 ]; then
+	mkdir $1
 else
-	rm -rf $backup_path/*
+	rm -rf $1/*
 fi
 
-MYSQL_PWD="$mysql_pwd" mysqldump -u $mysql_user --all-databases > $backup_path/base.sql
+# Dump la db
+MYSQL_PWD="$2" mysqldump -u $3 --all-databases > $1/base.sql
 
-mkdir $backup_path/apache
+# Récupérer le dossier du webserver
+mkdir $1/apache
+cp -r $4 $1/apache
 
-cp -r $path_to_website $backup_path/apache
-tar jcvf backup.bz2 $backup_path
-scp -i ~/.ssh/id_rsa.pub backup.bz2 sasabe@10.1.1.2:~
+# Ajouter à une archive, et envoyer ça en SCP
+tar jcvf $7.backup.bz2 $1
+# scp -B = scp en batch, scp -i = interactif, avec la clé devant être spécifiée
+scp -B $7.backup.bz2 $5@$6:~
