@@ -38,6 +38,6 @@ do
   for key in $site_keys
   do
     getSiteParam
-   done
+  done
 #  ssh $distant_user@$site_address "bash -s" < ./script.sh $backup_path $mysql_pwd $mysql_user $path_to_website $local_user $local_ip $site_name
 done
