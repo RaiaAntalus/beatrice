@@ -33,5 +33,5 @@ do
     #  Récupère chaque key et lui associe sa valeur (backup_path="/home/$USER/backup" par ex)
     declare "${key}=$(jq --raw-output --arg site "$site" --arg key "$key" '.[] | select(.site_name==$site) | .[$key]' $conf_file)"
   done
-  ssh $distant_user@$site_address "bash -s" < ./script.sh $backup_path $mysql_pwd $mysql_user $path_to_website $local_user $local_ip $site_name
+  ssh $distant_user@$site_address "bash -s" < ./backup_script.sh $backup_path $mysql_pwd $mysql_user $path_to_website $local_user $local_ip $site_name
 done

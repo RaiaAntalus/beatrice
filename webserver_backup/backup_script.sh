@@ -26,4 +26,4 @@ cp -r $4 $1/apache
 tar jcf $7.backup.bz2 --directory=$1 .
 # scp -B = scp en batch, scp -i = interactif, avec la clé devant être spécifiée
 scp -B $7.backup.bz2 $5@$6:~
-echo "$7 : TOUCACER complete"
+echo "Site $7 : backup complete"
