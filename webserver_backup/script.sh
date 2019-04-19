@@ -22,7 +22,7 @@ MYSQL_PWD="$2" mysqldump -u $3 --all-databases > $1/base.sql
 mkdir $1/apache
 cp -r $4 $1/apache
 
-# Ajouter à une archive, et envoyer ça en SCP
+# Ajouter à une archive, et envoyer ça en SCP. Indiquer le directory empêche la création de toute l'arborescence (correspond à effectuer un cd)
 tar jcvf $7.backup.bz2 --directory=$1 .
 # scp -B = scp en batch, scp -i = interactif, avec la clé devant être spécifiée
 scp -B $7.backup.bz2 $5@$6:~
