@@ -1,7 +1,7 @@
 [
   {
-    "site_name": "site1",
-    "site_address": "10.1.1.2",
+    "site_name": "kagami",
+    "site_address": "10.1.1.1",
     "distant_user": "sasabe",
     "backup_path": "/home/$USER/backup",
     "mysql_pwd":"toucacer",
@@ -9,8 +9,8 @@
     "path_to_website": "/var/www/html"
   },
   {
-    "site_name": "site2",
-    "site_address": "10.1.1.3",
+    "site_name": "konata",
+    "site_address": "10.1.1.1",
     "distant_user": "sasabe",
     "backup_path": "/home/$USER/backup",
     "mysql_pwd":"toucacer",
