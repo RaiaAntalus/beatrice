@@ -1,4 +1,4 @@
-How to use this tool ?
+# How to use this tool ?
 
 Run local_script.sh.
 It will query sites.json for all needed information such as the site's address.
