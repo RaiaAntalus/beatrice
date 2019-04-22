@@ -23,6 +23,7 @@ mkdir $1/apache
 cp -r $4 $1/apache
 
 # Ajouter à une archive, et envoyer ça en SCP
-tar jcvf $7.backup.bz2 $1
+tar jcf $7.backup.bz2 --directory=$1 .
 # scp -B = scp en batch, scp -i = interactif, avec la clé devant être spécifiée
 scp -B $7.backup.bz2 $5@$6:~
+echo "Site $7 : backup complete"

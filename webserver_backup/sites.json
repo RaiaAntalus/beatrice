@@ -1,5 +1,6 @@
-{
-  "site1": {
+[
+  {
+    "site_name": "kagami",
     "site_address": "10.1.1.1",
     "distant_user": "sasabe",
     "backup_path": "/home/$USER/backup",
@@ -7,7 +8,8 @@
     "mysql_user": "root",
     "path_to_website": "/var/www/html"
   },
-  "site2": {
+  {
+    "site_name": "konata",
     "site_address": "10.1.1.1",
     "distant_user": "sasabe",
     "backup_path": "/home/$USER/backup",
@@ -15,4 +17,4 @@
     "mysql_user": "root",
     "path_to_website": "/var/www/html"
   }
-}
+]
