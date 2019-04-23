@@ -1,17 +1,22 @@
 #!/usr/bin/env bash
 
 function getSiteList() {
-  # Paramètre : $1 = le fichier json global
-  # Retourne : $site_list = liste de tous les sites référencés dans le json
+  # Paramètre : $conf_file = le fichier JSON global
+  # Retourne : $site_list = liste de tous les sites référencés dans le JSON
   site_list=$(jq --raw-output '.[].site_name' $conf_file)
 }
 
 function getSiteConf() {
-  # Paramètre : $1 = un site de la liste site_list
+  # Paramètre : $site = un site de la liste site_list, $conf_file = le fichier JSON global
   # Retourne : $site_keys = une liste des clés attribuées au site
   site_keys=$(jq --raw-output --arg site "$site" '.[] | select(.site_name==$site) | keys[]' $conf_file)
 }
 
+function getSiteParam() {
+  # Paramètres : $site = un site de la liste site_list, $key = une clé attribuée au site, $conf_file = le fichier JSON global
+  # Retourne : ${key} = une variable du nom de la valeur de $key (ex : si $key="sasabe", alors ${key} sera $sasabe), ainsi que sa valeur dans le JSON
+  declare -g "${key}=$(jq --raw-output --arg site "$site" --arg key "$key" '.[] | select(.site_name==$site) | .[$key]' $conf_file)"
+}
 
 # Setup les variables hôtes
 local_user=$(whoami)
@@ -31,7 +36,8 @@ do
   for key in $site_keys
   do
     #  Récupère chaque key et lui associe sa valeur (backup_path="/home/$USER/backup" par ex)
-    declare "${key}=$(jq --raw-output --arg site "$site" --arg key "$key" '.[] | select(.site_name==$site) | .[$key]' $conf_file)"
+    getSiteParam
+    echo ${key}
   done
-  ssh $distant_user@$site_address "bash -s" < ./backup_script.sh $backup_path $mysql_pwd $mysql_user $path_to_website $local_user $local_ip $site_name
+  # ssh $distant_user@$site_address "bash -s" < ./backup_script.sh $backup_path $mysql_pwd $mysql_user $path_to_website $local_user $local_ip $site_name
 done
