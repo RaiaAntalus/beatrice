@@ -39,5 +39,5 @@ do
     getSiteParam
     echo ${key}
   done
-  # ssh $distant_user@$site_address "bash -s" < ./backup_script.sh $backup_path $mysql_pwd $mysql_user $path_to_website $local_user $local_ip $site_name
+  ssh $distant_user@$site_address "bash -s" < ./backup_script.sh $backup_path $mysql_pwd $mysql_user $path_to_website $local_user $local_ip $site_name
 done
