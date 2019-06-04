@@ -16,3 +16,6 @@ Requires :
 - Just DL the 3 files (backup_script.sh, local_script.sh and sites.json)
 - Run backup_script.sh
 - All archives will land in the same dir as the script is run in.
+
+# Why is it called Beatrice ?
+Just because I'm playing Umineko no Naku koro ni, and I love 07th Expansion universe.
