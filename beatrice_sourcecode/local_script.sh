@@ -37,7 +37,6 @@ do
   do
     #  Récupère chaque key et lui associe sa valeur (backup_path="/home/$USER/backup" par ex)
     getSiteParam
-    echo ${key}
   done
   ssh $distant_user@$site_address "bash -s" < ./backup_script.sh $backup_path $mysql_pwd $mysql_user $path_to_website $local_user $local_ip $site_name
 done
