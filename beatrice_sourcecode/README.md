@@ -2,7 +2,7 @@
 
 Run local_script.sh.
 It will query sites.json for all needed information such as the site's address.
-Then it'll execute script.sh via ssh on remote sites according to sites.json
+Then it'll execute backup_script.sh via ssh on remote sites according to sites.json
 
 Edit sites.json to your needs.
 
