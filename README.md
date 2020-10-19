@@ -1,4 +1,4 @@
-# Beatrice
+# beatrice
 A little program that backups distant webservers and their mySQL databases, written in bash.
 
 Requires :
